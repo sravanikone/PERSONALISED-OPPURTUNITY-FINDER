@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommended Opportunities</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .results-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #4CAF50;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .btn-back {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        .btn-back:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-container">
+        <h2>Recommended Opportunities for {{ name }}</h2>
+        <ul>
+            {% for job in recommendations %}
+                <li>{{ job }}</li>
+            {% endfor %}
+        </ul>
+        <a class="btn-back" href="/">Back to Profile Form</a>
+    </div>
+</body>
+</html>
