@@ -1,74 +1,110 @@
+# Personalized Opportunity Finder
 
-This project is a Flask-based web application designed to collect user profile data and provide personalized opportunity suggestions based on their skills, interests, and location.
+This is a Flask-based web application that allows users to submit their profile information and resume, then receive personalized job opportunity recommendations based on their skills, interests, location, and resume content.
+
+---
 
 ## 🚀 Features
-- User-friendly HTML form for data collection
-- Data validation for required fields
-- JSON response displaying submitted data
-- Easy integration with databases for future improvements
 
-## 📂 Project Structure
+- Collect user input (name, skills, interests, experience, location)
+- Upload and parse resumes (PDF or DOCX)
+- Match opportunities using form data + resume keywords
+- Display recommended jobs on a separate results page
+- Frontend styled with HTML + CSS
+
+---
+
+## 📁 Project Structure
+
 ```
-/project-root
+project/
 │
-├── /templates
-│   └── index.html          # HTML form for user input
-│
-├── /static                 # For CSS/JS (Optional)
-│   ├── styles.css
-│   └── script.js
-│
-├── app.py                  # Flask backend logic
-│
-├── requirements.txt        # Flask dependencies
-│
-└── README.md
+├── app.py                  # Main Flask application
+├── uploads/                # Folder where uploaded resumes are stored
+├── templates/
+│   ├── index.html          # Form page
+│   └── results.html        # Results page with recommendations
+├── static/
+│   ├── styles.css          # CSS for styling
+│   └── script.js           # JS for client-side validation
+└── README.md               # You're reading it!
 ```
 
-## 🛠️ Setup Instructions
-### 1. Install Dependencies
-Create and activate a virtual environment:
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Project
+
+```bash
+git clone <your-repo-url>
+cd project
 ```
+
+### 2. Create a Virtual Environment (Optional but Recommended)
+
+```bash
 python -m venv venv
-venv\Scripts\activate      # For Windows
-source venv/bin/activate   # For Mac/Linux
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-Install Flask using:
-```
-pip install -r requirements.txt
+### 3. Install Required Packages
+
+```bash
+pip install flask pdfminer.six python-docx
 ```
 
-### 2. Run the Application
-In the terminal, run:
-```
+### 4. Run the Application
+
+```bash
 python app.py
 ```
-✅ The app will run on **http://localhost:5000**
 
-### 3. Test the Application
-- Open your browser and visit **http://localhost:5000**
-- Fill out the form and submit.
-- You should receive a JSON response displaying the submitted data.
+### 5. Visit in Browser
 
-### 4. Sample JSON Response
-```json
-{
-    "message": "User profile submitted successfully!",
-    "data": {
-        "name": "John Doe",
-        "skills": "Python, Flask",
-        "interests": "Web Development, AI",
-        "location": "India"
-    }
-}
-```
+Open: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-## 🔍 Debugging Tips
-- **`ModuleNotFoundError: No module named 'flask'`** → Ensure Flask is installed and your virtual environment is active.
-- **`jinja2.exceptions.TemplateNotFound: index.html`** → Ensure `index.html` is inside the `/templates` folder.
-- **Port Issues (`OSError: [Errno 48] Address already in use`)** → Use `python app.py --port=5001`
+---
 
-## 📧 Contact
-If you face any issues, feel free to reach out!
+## 📎 Supported Resume Formats
 
+- .pdf
+- .docx
+
+> The resume content is parsed to extract keywords which improve the accuracy of job matching.
+
+---
+
+## 📌 Example Opportunities
+
+Some mocked job examples include:
+
+- Python Developer - TCS (Hyderabad)
+- Frontend Intern - Infosys (Hyderabad)
+- AI Research Assistant - IIIT
+- Remote Web Dev Intern - StartupX
+- ML Engineer - Google AI
+
+---
+
+## 🛡️ Security Note
+
+This app uses Flask's `session` and requires a secret key. For production usage:
+- Use a more secure secret key
+- Implement file type and size validation
+- Sanitize user input
+
+---
+
+## 📬 Future Improvements
+
+- Real-time job fetching from external APIs
+- Resume scoring / highlighting
+- Save user profiles in a database (SQLite, Firebase, etc.)
+- Email results to the user
+
+---
+
+## 👩‍💻 Author
+
+Built with ❤️ by your AI assistant and you!
